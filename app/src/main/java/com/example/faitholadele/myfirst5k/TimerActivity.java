@@ -32,8 +32,8 @@ public class TimerActivity extends AppCompatActivity {
     TextView updateState;
 
     //times we want for week 1
-    private static final long START_RUN_WEEK1 = 8000;
-    private static final long START_WALK_WEEK1 = 8000;
+    private static long START_RUN_WEEK = 0;
+    private static long START_WALK_WEEK = 0;
 
     //timer declarations
     private CountDownTimer runCountDownTimer; //to begin running
@@ -44,20 +44,34 @@ public class TimerActivity extends AppCompatActivity {
     private boolean isWalking;
     private boolean isCountingDown;
 
-    private long timeLeftToRun = START_RUN_WEEK1;
-    private long timeLeftToWalk = START_WALK_WEEK1;
+    private long timeLeftToRun;
+    private long timeLeftToWalk;
 
 
     //Text to speech
     TextToSpeech workOutUpdates;
 
     //Vibrate
-    Vibrator vibrate;
+//    Vibrator vibrate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timer);
+
+        //getExtras
+        int savedRunTime = getIntent().getIntExtra("RUNTIME", 0);
+        int saveWalkTime = getIntent().getIntExtra("WALKTIME", 0);
+        int Reps = getIntent().getIntExtra("REPS", 0);
+
+        weekReps = Reps;
+        weekTempReps = Reps;
+
+        START_RUN_WEEK = savedRunTime;
+        START_WALK_WEEK = saveWalkTime;
+
+        timeLeftToRun = savedRunTime;
+        timeLeftToWalk = saveWalkTime;
 
         displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -65,7 +79,7 @@ public class TimerActivity extends AppCompatActivity {
         width = displayMetrics.widthPixels;
         height = displayMetrics.heightPixels;
 
-        getWindow().setLayout((int)(width * 0.8), (int)(height * 0.5));
+        getWindow().setLayout((int)(width * 1.0), (int)(height * 0.5));
 
         isRunning = false;
         isWalking = false;
@@ -81,8 +95,6 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                weekReps = 2;
-                weekTempReps = 2;
 
                 if(isWalking == false & isCountingDown == false)
                 {
@@ -109,6 +121,8 @@ public class TimerActivity extends AppCompatActivity {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//                if(vibrate != null)
+//                    vibrate.cancel();
                 finish();
             }
         });
@@ -125,7 +139,8 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
-        vibrate = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+//        vibrate = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+
     }
 
     private void pauseRunTimer() {
@@ -146,7 +161,7 @@ public class TimerActivity extends AppCompatActivity {
         isCountingDown = true;
         start.setText("PAUSE");
         speak("Begin Run");
-        vibrate.vibrate(300);
+//        vibrate.vibrate(300);
         updateState.setText("Running...");
 
         runCountDownTimer = new CountDownTimer(timeLeftToRun, 1000) {
@@ -159,7 +174,17 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onFinish() {
                 isRunning = false;
-                startWalkTimer();
+                if( weekTempReps == 0)
+                {
+                    updateState.setText("WorkOut Completed.");
+                    speak("WorkOut Completed");
+//                        vibrate.vibrate(300);
+                }
+                else
+                {
+                    startWalkTimer();
+                }
+
             }
         }.start();
     }
@@ -177,7 +202,7 @@ public class TimerActivity extends AppCompatActivity {
             isWalking = true;
             updateState.setText("Walking...");
             speak("Begin Walk");
-            vibrate.vibrate(300);
+//            vibrate.vibrate(300);
             isCountingDown = true;
             start.setText("PAUSE");
             walkCountDownTimer = new CountDownTimer(timeLeftToWalk, 1000) {
@@ -202,7 +227,7 @@ public class TimerActivity extends AppCompatActivity {
                         weekReps = weekTempReps;
                         updateState.setText("WorkOut Completed.");
                         speak("WorkOut Completed");
-                        vibrate.vibrate(600);
+//                        vibrate.vibrate(300);
                     }
                 }
             }.start();
@@ -210,8 +235,8 @@ public class TimerActivity extends AppCompatActivity {
     }
 
     private void resetCountDownTimer() {
-        timeLeftToWalk = START_WALK_WEEK1;
-        timeLeftToRun = START_RUN_WEEK1;
+        timeLeftToWalk = START_WALK_WEEK;
+        timeLeftToRun = START_RUN_WEEK;
         walkUpdates();
         runUpdates();
         start.setText("START");
@@ -222,7 +247,7 @@ public class TimerActivity extends AppCompatActivity {
         int minutes = (int) (timeLeftToWalk / 1000) / 60;
         int seconds = (int) (timeLeftToWalk / 1000) % 60;
 
-        String currentCount = String.format("%02d:%02d", minutes, seconds);
+        String currentCount = String.format("%02d:%02d:%02d", 00, minutes, seconds);
         timerTextView.setText(currentCount);
 
     }
@@ -231,19 +256,21 @@ public class TimerActivity extends AppCompatActivity {
         int minutes = (int) (timeLeftToRun / 1000) / 60;
         int seconds = (int) (timeLeftToRun / 1000) % 60;
 
-        String currentCount = String.format("%02d:%02d", minutes, seconds);
+        String currentCount = String.format("%02d:%02d:%02d", 00, minutes, seconds);
         timerTextView.setText(currentCount);
     }
 
     @Override
     protected void onDestroy() {
-
+//        if(vibrate != null)
+//            vibrate.cancel();
         if(workOutUpdates != null)
         {
             workOutUpdates.stop();
             workOutUpdates.shutdown();
 
         }
+
         super.onDestroy();
     }
 }

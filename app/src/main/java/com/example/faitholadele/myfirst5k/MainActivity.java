@@ -4,36 +4,136 @@ import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-
+    //    private Button week1;
     private Button week1;
+    private Button week2;
+    private Button week3;
+    private Button week4;
+    private Button week5;
+    private Button week6;
+    private Button week7;
+    private Button week8;
+    private Button week9;
+    private Button week10;
+    private Button week11;
+    private Button week12;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        
         week1 = (Button) findViewById(R.id.week1);
-
-        week1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //open timer window
-                startActivity(new Intent(MainActivity.this, TimerActivity.class));
-
-            }
-        });
+        week1.setOnClickListener(this);
+        week2 = (Button) findViewById(R.id.week2);
+        week2.setOnClickListener(this);
+        week3 = (Button) findViewById(R.id.week3);
+        week3.setOnClickListener(this);
+        week4 = (Button) findViewById(R.id.week4);
+        week4.setOnClickListener(this);
+        week5 = (Button) findViewById(R.id.week5);
+        week5.setOnClickListener(this);
+        week6 = (Button) findViewById(R.id.week6);
+        week6.setOnClickListener(this);
+        week7 = (Button) findViewById(R.id.week7);
+        week7.setOnClickListener(this);
+        week8 = (Button) findViewById(R.id.week8);
+        week8.setOnClickListener(this);
+        week9 = (Button) findViewById(R.id.week9);
+        week9.setOnClickListener(this);
+        week10 = (Button) findViewById(R.id.week10);
+        week10.setOnClickListener(this);
+        week11 = (Button) findViewById(R.id.week11);
+        week11.setOnClickListener(this);
+        week12 = (Button) findViewById(R.id.week12);
+        week12.setOnClickListener(this);
     }
 
 
+    @Override
+    public void onClick(View v) {
+        if(v == week1)
+        {
+            newActivity(30000, 60000, 5);
 
+        }
+        else if(v == week2)
+        {
+            newActivity(60000, 180000, 4);
 
-    
+        }
+        else if(v == week3)
+        {
+            newActivity(90000, 180000, 4);
+
+        }
+        else if(v == week4)
+        {
+            newActivity(120000, 120000, 4);
+
+        }
+        else if(v == week5)
+        {
+            newActivity(180000, 120000, 3);
+
+        }
+        else if(v == week6)
+        {
+            newActivity(240000, 120000, 3);
+
+        }
+        else if(v == week7)
+        {
+            newActivity(360000, 120000, 2);
+
+        }
+        else if(v == week8)
+        {
+            newActivity(480000, 60000, 2);
+
+        }
+        else if(v == week9)
+        {
+            newActivity(540000, 60000, 2);
+
+        }
+        else if(v == week10)
+        {
+            newActivity(600000, 60000, 2);
+
+        }
+        else if(v == week11)
+        {
+            newActivity(900000, 60000, 1);
+
+        }
+        else if(v == week12)
+        {
+            newActivity(((900000) * 2), 0, 0);
+
+        }
+        else
+        {
+            //custome?
+            Log.i("CUSTOME", "Doing Great Things!!!!");
+        }
+    }
+
+    private void newActivity(int runTime, int walkTime, int Reps){
+
+        Intent intent = new Intent(getBaseContext(), TimerActivity.class);
+        intent.putExtra("RUNTIME", runTime);
+        intent.putExtra("WALKTIME", walkTime);
+        intent.putExtra("REPS", Reps);
+        startActivity(intent);
+//        startActivity(new Intent(MainActivity.this, TimerActivity.class));
+    }
 }

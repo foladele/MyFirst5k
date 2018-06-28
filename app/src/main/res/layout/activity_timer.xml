@@ -13,10 +13,17 @@
         android:orientation="vertical">
 
         <TextView
+            android:layout_width="368dp"
+            android:layout_height="wrap_content"
+            android:text="hours     minutes   seconds"
+            android:textSize="25dp"
+            android:gravity="center" />
+
+        <TextView
             android:id="@+id/CountTimer"
             android:layout_width="368dp"
             android:layout_height="wrap_content"
-            android:text="00:00"
+            android:text="00:00:00"
             android:textSize="75dp"
             android:gravity="center" />
 
