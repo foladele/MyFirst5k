@@ -1,7 +1,9 @@
 package com.example.faitholadele.myfirst5k;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.os.Vibrator;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AppCompatActivity;
@@ -32,20 +34,26 @@ public class TimerActivity extends AppCompatActivity {
     TextView updateState;
 
     //times we want for week 1
+    //300000
+    private static final long WARMUP_COOLDOWN = 300000;
     private static long START_RUN_WEEK = 0;
     private static long START_WALK_WEEK = 0;
 
     //timer declarations
     private CountDownTimer runCountDownTimer; //to begin running
     private CountDownTimer walkCountDownTimer; //to begin walking
+    private CountDownTimer wCoolCountDownTimer; //to cool down
 
     // some boolean to check states
     private boolean isRunning;
     private boolean isWalking;
     private boolean isCountingDown;
+    private boolean oneRun;
+    private boolean isWarmUpOrCoolDown = false;
 
     private long timeLeftToRun;
     private long timeLeftToWalk;
+    private long warmUp_coolDown_TimeLeft = WARMUP_COOLDOWN;
 
 
     //Text to speech
@@ -54,6 +62,10 @@ public class TimerActivity extends AppCompatActivity {
     //Vibrate
 //    Vibrator vibrate;
 
+
+
+
+    Handler handler = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,6 +96,8 @@ public class TimerActivity extends AppCompatActivity {
         isRunning = false;
         isWalking = false;
         isCountingDown = false;
+        isWarmUpOrCoolDown = true;
+        oneRun = false;
 
         start = (Button) findViewById(R.id.beginWorkout);
         stop = (Button) findViewById(R.id.stopWorkout);
@@ -95,16 +109,26 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(isWarmUpOrCoolDown & isCountingDown == false){
 
-                if(isWalking == false & isCountingDown == false)
+                    if(weekTempReps == 0)
+                    {
+                        oneRun = true;
+                    }
+                    warmUpAndCoolDown();
+                }
+                else if((isWalking == false & isCountingDown == false) & isWarmUpOrCoolDown == false)
                 {
                     startRunTimer();
                 }
-                else if(isWalking == true & isCountingDown == false)
+                else if(isWalking == true & isCountingDown == false & isWarmUpOrCoolDown == false)
                 {
                     startWalkTimer();
                 }
+                else if((isWarmUpOrCoolDown==true & isCountingDown == true) & (isWalking == false & isRunning == false)){
 
+                    pauseWarmUpCoolDownTimer();
+                }
                 else if(isRunning )
                 {
                     pauseRunTimer();
@@ -121,13 +145,24 @@ public class TimerActivity extends AppCompatActivity {
         stop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 //                if(vibrate != null)
 //                    vibrate.cancel();
+
+                Intent intent=new Intent();
+                setResult(999,intent);
                 finish();
             }
         });
 
-        runUpdates();
+        if(weekReps == weekTempReps)
+        {
+            updateWarmUpCoolDown();
+        }
+        else {
+            runUpdates();
+        }
+
 
         workOutUpdates = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
             @Override
@@ -154,39 +189,138 @@ public class TimerActivity extends AppCompatActivity {
         walkCountDownTimer.cancel();
         isCountingDown = false;
         start.setText("START");
+
+    }
+
+    private void pauseWarmUpCoolDownTimer() {
+
+        wCoolCountDownTimer.cancel();
+        isCountingDown = false;
+        start.setText("START");
+
     }
     private void startRunTimer() {
 
         isRunning = true;
         isCountingDown = true;
         start.setText("PAUSE");
-        speak("Begin Run");
-//        vibrate.vibrate(300);
-        updateState.setText("Running...");
 
-        runCountDownTimer = new CountDownTimer(timeLeftToRun, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                timeLeftToRun = millisUntilFinished;
-                runUpdates();
-            }
+        if(!isWarmUpOrCoolDown ) {
+            speak("Begin Run");
+//            vibrate.vibrate(300);
+            updateState.setText("Running...");
 
-            @Override
-            public void onFinish() {
-                isRunning = false;
-                if( weekTempReps == 0)
-                {
-                    updateState.setText("WorkOut Completed.");
-                    speak("WorkOut Completed");
+            runCountDownTimer = new CountDownTimer(timeLeftToRun, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    timeLeftToRun = millisUntilFinished;
+                    runUpdates();
+                }
+
+                @Override
+                public void onFinish() {
+                    isRunning = false;
+                    if (weekTempReps == 0) {
+                        updateState.setText("Cool Down.");
 //                        vibrate.vibrate(300);
+//                        oneRun = true;
+                        warmUpAndCoolDown();
+
+                    } else {
+                        startWalkTimer();
+                    }
+
                 }
-                else
-                {
-                    startWalkTimer();
-                }
+            }.start();
+        }
+    }
+
+    private void warmUpAndCoolDown() {
+
+        if(!isWalking & !isRunning)
+        {
+            isWarmUpOrCoolDown = true;
+            isCountingDown = true;
+            isRunning = false;
+            isWalking = false;
+            start.setText("PAUSE");
+            if((weekReps == weekTempReps) & weekTempReps != 0)
+            {
+                updateState.setText("Warm up!");
+                speak("warm up");
 
             }
-        }.start();
+            else if (weekTempReps == 0 & oneRun == true){
+
+                updateState.setText("Warm up!");
+                speak("warm up");
+
+
+            }
+            else if(weekReps == 0 & weekTempReps != 0)
+            {
+                speak("cool down");
+            }
+            else if(weekTempReps == 0 & oneRun == false)
+            {
+                speak("cool down");
+            }
+
+            wCoolCountDownTimer = new CountDownTimer(warmUp_coolDown_TimeLeft, 1000) {
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    warmUp_coolDown_TimeLeft = millisUntilFinished;
+                    updateWarmUpCoolDown();
+                }
+
+                @Override
+                public void onFinish() {
+
+                    warmUp_coolDown_TimeLeft = WARMUP_COOLDOWN;
+                    isWarmUpOrCoolDown = false;
+                    isCountingDown = false;
+                    updateWarmUpCoolDown();
+
+                    if((weekReps == weekTempReps)  & weekTempReps != 0)
+                    {
+                        startRunTimer();
+
+                    }
+                    else if(weekTempReps == 0 & oneRun == true)
+                    {
+                        oneRun = false;
+                        startRunTimer();
+                    }
+                    else if(weekReps == 0)
+                    {
+                        weekReps = weekTempReps;
+                        updateState.setText("Work Out Completed!");
+                        if(weekTempReps == 0)
+                        {
+                            timeLeftToRun = START_RUN_WEEK;
+                        }
+                        start.setText("RESTART");
+//                    vibrate.vibrate(300);
+                        speak("workout completed");
+//                        isWarmUpOrCoolDown = true; //To re-start from beginning
+
+
+                    }
+
+                }
+            }.start();
+        }
+
+
+    }
+
+    private void updateWarmUpCoolDown() {
+
+        int minutes = (int) (warmUp_coolDown_TimeLeft / 1000) / 60;
+        int seconds = (int) (warmUp_coolDown_TimeLeft / 1000) % 60;
+
+        String currentCount = String.format("%02d:%02d:%02d", 00, minutes, seconds);
+        timerTextView.setText(currentCount);
     }
 
     // Text To speech method
@@ -224,10 +358,11 @@ public class TimerActivity extends AppCompatActivity {
                     }
                     else if(weekReps == 0)
                     {
-                        weekReps = weekTempReps;
-                        updateState.setText("WorkOut Completed.");
-                        speak("WorkOut Completed");
+
+                        updateState.setText("Cool down.");
 //                        vibrate.vibrate(300);
+//                        speak("cool down");
+                        warmUpAndCoolDown();
                     }
                 }
             }.start();
@@ -260,8 +395,29 @@ public class TimerActivity extends AppCompatActivity {
         timerTextView.setText(currentCount);
     }
 
+
+    private void handlerToCancelRunnables() {
+        Runnable myRunnable = new Runnable() {
+            public void run() {
+                //Some interesting task
+            }
+        };
+    }
+
+    @Override
+    protected void onStop() {
+
+        Intent intent=new Intent();
+        setResult(999,intent);
+//        if(vibrate != null)
+//            vibrate.cancel();
+        super.onStop();
+    }
+
     @Override
     protected void onDestroy() {
+        Intent intent=new Intent();
+        setResult(999,intent);
 //        if(vibrate != null)
 //            vibrate.cancel();
         if(workOutUpdates != null)
@@ -270,7 +426,6 @@ public class TimerActivity extends AppCompatActivity {
             workOutUpdates.shutdown();
 
         }
-
         super.onDestroy();
     }
 }

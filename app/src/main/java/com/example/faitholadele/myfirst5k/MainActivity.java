@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -24,6 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button week10;
     private Button week11;
     private Button week12;
+    private Button Test;
 
 
     @Override
@@ -55,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         week11.setOnClickListener(this);
         week12 = (Button) findViewById(R.id.week12);
         week12.setOnClickListener(this);
+
+        Test = (Button) findViewById(R.id.Test);
+        Test.setOnClickListener(this);
     }
 
 
@@ -120,6 +125,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             newActivity(((900000) * 2), 0, 0);
 
         }
+        else if(v == Test)
+        {
+            newActivity(8000, 10000, 0);
+        }
         else
         {
             //custome?
@@ -128,12 +137,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void newActivity(int runTime, int walkTime, int Reps){
+            //disables Touch
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
         Intent intent = new Intent(getBaseContext(), TimerActivity.class);
         intent.putExtra("RUNTIME", runTime);
         intent.putExtra("WALKTIME", walkTime);
         intent.putExtra("REPS", Reps);
-        startActivity(intent);
+        startActivityForResult(intent, 999);
 //        startActivity(new Intent(MainActivity.this, TimerActivity.class));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if(requestCode == 999)
+        {
+            if(resultCode == 999)
+            {
+                //enables Touch
+//                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+
+            }
+        }
     }
 }
