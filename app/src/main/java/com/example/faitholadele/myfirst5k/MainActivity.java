@@ -2,6 +2,7 @@ package com.example.faitholadele.myfirst5k;
 
 import android.content.Intent;
 import android.os.CountDownTimer;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.ab_layout);
 
         week1 = (Button) findViewById(R.id.week1);
         week1.setOnClickListener(this);
@@ -67,7 +71,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v == week1)
         {
-            newActivity(30000, 60000, 5);
+            newActivity(30000, 180000, 5);
+//            newActivity(6000, 6000, 5);
 
         }
         else if(v == week2)

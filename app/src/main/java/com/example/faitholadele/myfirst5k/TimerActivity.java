@@ -311,7 +311,6 @@ public class TimerActivity extends AppCompatActivity {
             }.start();
         }
 
-
     }
 
     private void updateWarmUpCoolDown() {

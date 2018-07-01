@@ -36,6 +36,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="TEST">
 
                     </Button>
@@ -52,12 +53,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   60 seconds"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -79,6 +81,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="  60 seconds"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -96,6 +99,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Any REP."
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -104,6 +108,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 2 minutes"></TextView>
                     </LinearLayout>
 
@@ -127,6 +132,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 1">
 
                     </Button>
@@ -144,12 +150,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   30 seconds"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -172,7 +179,8 @@
                             android:id="@+id/textView"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
-                            android:text="      1 minute"
+                            android:text="      3 minute"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -191,6 +199,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 6x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -200,6 +209,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 21 minutes"></TextView>
                     </LinearLayout>
 
@@ -218,6 +228,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 2">
                     </Button>
 
@@ -233,12 +244,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   1 minute"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -260,6 +272,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      3 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -270,12 +283,14 @@
                         android:orientation="vertical">
 
                         <TextView
+                            android:id="@+id/textView2"
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
+                            android:textColor="#141516"
                             android:text="Repeat 5x"
                             android:textSize="20dp"></TextView>
 
@@ -285,6 +300,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 20 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -301,6 +317,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
+                        android:background="#53ce10"
                         android:gravity="center"
                         android:text="WEEK 3">
                     </Button>
@@ -318,12 +335,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   90 seconds"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -345,6 +363,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      3 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -362,6 +381,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 5x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -370,6 +390,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 22.5 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -387,6 +408,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 4">
 
                     </Button>
@@ -403,12 +425,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   2 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -430,6 +453,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      2 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -447,6 +471,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 5x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -455,6 +480,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 20 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -472,6 +498,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 5">
 
                     </Button>
@@ -489,12 +516,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   3 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -516,6 +544,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      2 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -533,6 +562,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 4x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -541,6 +571,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 20 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -558,6 +589,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 6">
 
                     </Button>
@@ -574,12 +606,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   4 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -601,6 +634,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      2 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -618,6 +652,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 4x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -626,6 +661,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 24 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -643,6 +679,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 7">
 
                     </Button>
@@ -659,12 +696,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   6 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -686,6 +724,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      2 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -703,6 +742,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 3x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -711,6 +751,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 24 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -729,6 +770,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 8">
 
                     </Button>
@@ -745,12 +787,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   8 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -772,6 +815,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      1 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -789,6 +833,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 3x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -797,6 +842,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 30 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -814,6 +860,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 9">
 
                     </Button>
@@ -831,12 +878,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   9 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -858,6 +906,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      1 minute"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -875,6 +924,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 3x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -883,6 +933,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 30 minutes"></TextView>
                     </LinearLayout>
 
@@ -901,6 +952,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 10">
 
                     </Button>
@@ -917,12 +969,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="48dp"
                             android:text="   10 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -944,6 +997,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      1 minute"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -961,6 +1015,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 3x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -969,6 +1024,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 33 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -986,6 +1042,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 11">
 
                     </Button>
@@ -1002,12 +1059,13 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="   15 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -1029,6 +1087,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:text="      1 minute"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -1046,6 +1105,7 @@
                             android:layout_alignParentTop="true"
                             android:gravity="center"
                             android:text="Repeat 2x"
+                            android:textColor="#141516"
                             android:textSize="20dp"></TextView>
 
                         <TextView
@@ -1054,6 +1114,7 @@
                             android:layout_alignParentLeft="true"
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
+                            android:textColor="#53ce10"
                             android:text="Total: 33 minutes"></TextView>
                     </LinearLayout>
                 </TableRow>
@@ -1080,6 +1141,7 @@
                         android:layout_alignParentStart="true"
                         android:layout_alignParentTop="true"
                         android:gravity="center"
+                        android:background="#53ce10"
                         android:text="WEEK 12">
 
                     </Button>
@@ -1096,13 +1158,14 @@
                             android:layout_height="50dp"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
-                            app:srcCompat="@drawable/running" />
+                            app:srcCompat="@drawable/runningman" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="50dp"
                             android:gravity="center"
                             android:text="   30 minutes"
+                            android:textColor="#141516"
                             android:textSize="12dp" />
                     </LinearLayout>
 
@@ -1118,6 +1181,7 @@
                             android:layout_alignParentStart="true"
                             android:layout_alignParentTop="true"
                             android:gravity="center"
+                            android:textColor="#53ce10"
                             android:text="Total: 30 minutes"></TextView>
 
                     </LinearLayout>
