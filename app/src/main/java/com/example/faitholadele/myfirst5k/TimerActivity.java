@@ -50,6 +50,7 @@ public class TimerActivity extends AppCompatActivity {
     private boolean isCountingDown;
     private boolean oneRun;
     private boolean isWarmUpOrCoolDown = false;
+    private boolean isCoolDown = false;
 
     private long timeLeftToRun;
     private long timeLeftToWalk;
@@ -60,7 +61,7 @@ public class TimerActivity extends AppCompatActivity {
     TextToSpeech workOutUpdates;
 
     //Vibrate
-//    Vibrator vibrate;
+    Vibrator vibrate;
 
 
 
@@ -111,9 +112,13 @@ public class TimerActivity extends AppCompatActivity {
 
                 if(isWarmUpOrCoolDown & isCountingDown == false){
 
-                    if(weekTempReps == 0)
+                    if(weekTempReps == 0 & !isCoolDown)
                     {
                         oneRun = true;
+                    }
+                    else
+                    {
+                        oneRun = false;
                     }
                     warmUpAndCoolDown();
                 }
@@ -146,8 +151,8 @@ public class TimerActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-//                if(vibrate != null)
-//                    vibrate.cancel();
+                if(vibrate != null)
+                    vibrate.cancel();
 
                 Intent intent=new Intent();
                 setResult(999,intent);
@@ -174,7 +179,7 @@ public class TimerActivity extends AppCompatActivity {
             }
         });
 
-//        vibrate = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+        vibrate = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
 
     }
 
@@ -207,7 +212,7 @@ public class TimerActivity extends AppCompatActivity {
 
         if(!isWarmUpOrCoolDown ) {
             speak("Begin Run");
-//            vibrate.vibrate(300);
+            vibrate.vibrate(300);
             updateState.setText("Running...");
 
             runCountDownTimer = new CountDownTimer(timeLeftToRun, 1000) {
@@ -222,8 +227,8 @@ public class TimerActivity extends AppCompatActivity {
                     isRunning = false;
                     if (weekTempReps == 0) {
                         updateState.setText("Cool Down.");
-//                        vibrate.vibrate(300);
-//                        oneRun = true;
+                        vibrate.vibrate(300);
+//                        oneRun = false;
                         warmUpAndCoolDown();
 
                     } else {
@@ -255,7 +260,6 @@ public class TimerActivity extends AppCompatActivity {
                 updateState.setText("Warm up!");
                 speak("warm up");
 
-
             }
             else if(weekReps == 0 & weekTempReps != 0)
             {
@@ -264,6 +268,7 @@ public class TimerActivity extends AppCompatActivity {
             else if(weekTempReps == 0 & oneRun == false)
             {
                 speak("cool down");
+                isCoolDown = true;
             }
 
             wCoolCountDownTimer = new CountDownTimer(warmUp_coolDown_TimeLeft, 1000) {
@@ -300,8 +305,9 @@ public class TimerActivity extends AppCompatActivity {
                             timeLeftToRun = START_RUN_WEEK;
                         }
                         start.setText("RESTART");
-//                    vibrate.vibrate(300);
+                    vibrate.vibrate(300);
                         speak("workout completed");
+                        vibrate.vibrate(600);
 //                        isWarmUpOrCoolDown = true; //To re-start from beginning
 
 
@@ -335,7 +341,7 @@ public class TimerActivity extends AppCompatActivity {
             isWalking = true;
             updateState.setText("Walking...");
             speak("Begin Walk");
-//            vibrate.vibrate(300);
+            vibrate.vibrate(300);
             isCountingDown = true;
             start.setText("PAUSE");
             walkCountDownTimer = new CountDownTimer(timeLeftToWalk, 1000) {
@@ -359,7 +365,7 @@ public class TimerActivity extends AppCompatActivity {
                     {
 
                         updateState.setText("Cool down.");
-//                        vibrate.vibrate(300);
+                        vibrate.vibrate(300);
 //                        speak("cool down");
                         warmUpAndCoolDown();
                     }
@@ -408,8 +414,8 @@ public class TimerActivity extends AppCompatActivity {
 
         Intent intent=new Intent();
         setResult(999,intent);
-//        if(vibrate != null)
-//            vibrate.cancel();
+        if(vibrate != null)
+            vibrate.cancel();
         super.onStop();
     }
 
@@ -417,8 +423,8 @@ public class TimerActivity extends AppCompatActivity {
     protected void onDestroy() {
         Intent intent=new Intent();
         setResult(999,intent);
-//        if(vibrate != null)
-//            vibrate.cancel();
+        if(vibrate != null)
+            vibrate.cancel();
         if(workOutUpdates != null)
         {
             workOutUpdates.stop();

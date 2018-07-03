@@ -37,12 +37,16 @@
                 android:id="@+id/beginWorkout"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:text="START"/>
+                android:text="START"
+                android:background="#34117a"
+                android:textColor="#ece8fe"/>
             <Button
                 android:id="@+id/stopWorkout"
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
-                android:text="CANCEL"/>
+                android:text="CANCEL"
+                android:background="#34117a"
+                android:textColor="#ece8fe"/>
 
 
         </LinearLayout>

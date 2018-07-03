@@ -3,7 +3,97 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e8eaed">
+    android:background="#e5dbf9">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#e5dbf9"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="MY FIRST 5K"
+            android:textColor="#141516"
+            android:textSize="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Each workout should be completed three times per week"
+            android:textColor="#141516"
+            android:textSize="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="This includes 5 minutes WARM UP and COOL DOWN"
+            android:textColor="#141516"
+            android:textSize="12dp" />
+
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:stretchColumns="0,1,2"
+            android:shrinkColumns="*">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/week"
+                    android:layout_width="20dp"
+                    android:layout_height="35dp"
+                    android:text="WEEK"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="#141516"/>
+
+                <TextView
+                    android:id="@+id/run"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:text="RUN"
+                    android:textColor="#141516"
+                    android:gravity="center"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/week"
+                    android:layout_toEndOf="@+id/week" />
+
+                <TextView
+                    android:id="@+id/walk"
+                    android:layout_width="40dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/run"
+                    android:layout_toRightOf="@+id/run"
+                    android:gravity="center"
+                    android:text="WALK"
+                    android:textColor="#141516" />
+
+                <TextView
+                    android:id="@+id/reps"
+                    android:layout_width="100dp"
+                    android:layout_height="35dp"
+                    android:gravity="center"
+                    android:text="REPS"
+                    android:layout_alignParentTop="true"
+                    android:layout_toRightOf="@+id/walk"
+                    android:layout_toEndOf="@+id/walk"
+                    android:textColor="#141516"/>
+            </TableRow>
+
+        </TableLayout>
+
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -11,7 +101,7 @@
         android:layout_gravity="center"
         android:text="Run Your First 5K"
         android:textColor="#141516"
-        android:id="@+id/mytext"
         android:textSize="30dp" />
+
 
 </LinearLayout>

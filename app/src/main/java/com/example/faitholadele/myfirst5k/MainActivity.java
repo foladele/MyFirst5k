@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.ab_layout);
 
+
+
         week1 = (Button) findViewById(R.id.week1);
         week1.setOnClickListener(this);
         week2 = (Button) findViewById(R.id.week2);
@@ -132,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if(v == Test)
         {
-            newActivity(8000, 10000, 0);
+            newActivity(8000, 10000, 1);
         }
         else
         {
@@ -167,4 +169,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         }
     }
+
 }
